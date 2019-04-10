@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   skip_before_action :verify_authenticity_token
   def create
 	@event = Event.create(event_params)
-	render json :@event
+	render json: @event
   end
 
   def destroy
@@ -13,9 +13,9 @@ class EventsController < ApplicationController
   def update
 	@event = Event.find(params[:id])
 	@event.update(event_params)
-	render json :@event
+	render json: @event
   end
-  
+
   def show
   @user = User.find(params[:id])
   render json: @user

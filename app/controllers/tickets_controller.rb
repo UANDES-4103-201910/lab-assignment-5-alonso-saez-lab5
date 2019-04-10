@@ -2,7 +2,7 @@ class TicketsController < ApplicationController
   skip_before_action :verify_authenticity_token
   def create
 	@ticket = Ticket.create(ticket_params)
-	render json :@ticket
+	render json: @ticket
   end
 
   def destroy
@@ -13,7 +13,7 @@ class TicketsController < ApplicationController
   def update
 	@ticket = Ticket.find(params[:id])
 	@ticket.update(ticket_params)
-	render json :@ticket
+	render json: @ticket
   end
 
   def show

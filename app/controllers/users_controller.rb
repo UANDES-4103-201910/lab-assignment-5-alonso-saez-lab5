@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token
   def create
 	@user = User.create(user_params)
-	render json :@user
+	render json: @user
   end
 
   def destroy
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def update
 	@user = User.find(params[:id])
 	@user.update(user_params)
-	render json :@user
+	render json: @user
   end
 
   def show
