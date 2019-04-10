@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   put '/tickets/:id' => "tickets#update"
   delete '/tickets/:id' => "tickets#destroy"
   get '/tickets/:id' => "tickets#show"
+  get '/tickets' => "tickets#index"
 
   #for EventVenuesController
   post '/event_venues' => "event_venues#create"
@@ -22,5 +23,14 @@ Rails.application.routes.draw do
   put '/users/:id' => "users#update"
   delete '/users/:id' => "users#destroy"
   get '/users/:id' => "users#show"
+
+  resources :ticket_types do
+  resources :tickets
+  end
+
+  post '/ticket_types/:ticket_type_id/tickets' => "tickets#create"
+  put '/ticket_types/:ticket_type_id/tickets/:id' => "tickets#update"
+  delete '/ticket_types/:ticket_type_id/tickets/:id' => "tickets#destroy"
+  get '/ticket_types/:ticket_type_id/tickets/:id' => "tickets#show"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

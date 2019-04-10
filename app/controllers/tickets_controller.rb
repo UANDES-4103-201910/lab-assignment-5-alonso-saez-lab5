@@ -15,15 +15,21 @@ class TicketsController < ApplicationController
 	@ticket.update(ticket_params)
 	render json :@ticket
   end
-  
+
   def show
-  @user = User.find(params[:id])
-  render json: @user
+  @ticket = Ticket.find(params[:id])
+  render json: @ticket
+  end
+
+  def index
+  @ticket = Ticket.all
+  render json: @ticket
   end
 
   private
-
   def ticket_params
         params.require(:ticket).permit(:id, :ticket_type_id, :order_id)
   end
+
+
 end
