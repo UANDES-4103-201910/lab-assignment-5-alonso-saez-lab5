@@ -1,4 +1,5 @@
 class TicketsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   def create
 	@ticket = Ticket.create(ticket_params)
 	render json :@ticket
@@ -14,6 +15,11 @@ class TicketsController < ApplicationController
 	@ticket.update(ticket_params)
 	render json :@ticket
   end
+  
+  def show
+  @user = User.find(params[:id])
+  render json: @user
+  end
 
   private
 
@@ -21,6 +27,3 @@ class TicketsController < ApplicationController
         params.require(:ticket).permit(:id, :ticket_type_id, :order_id)
   end
 end
-
-
-
