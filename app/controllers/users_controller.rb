@@ -21,8 +21,28 @@ class UsersController < ApplicationController
 	render json: @user
   end
 
-  private
+  def index
+  @user = User.all
+  render json: @user
+  end
 
+  #def user_with_most_tickets
+    #ordenes = Order.group(:user_id).count
+    #p= persons.order('count desc').limit(1)
+    #id_usuario = p.keys
+    #usuario = User.find(:id_usuario)
+    #return usuario.to_json
+    #render json: @user
+  #end
+
+  def user_with_most_tickets
+  p = Order.group(:user_id).count
+  @user = p.order('COUNT desc')
+  render json: @user
+
+end
+
+  private
   def user_params
         params.require(:user).permit(:id, :name, :lastname, :email, :password, :address)
   end

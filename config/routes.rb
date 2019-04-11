@@ -11,18 +11,22 @@ Rails.application.routes.draw do
   put '/event_venues/:id' => "event_venues#update"
   delete '/event_venues/:id' => "event_venues#destroy"
   get '/event_venues/:id' => "event_venues#show"
+  get '/event_venues' => "event_venues#index"
 
   #for EventsController
   post '/events' => "events#create"
   put '/events/:id' => "events#update"
   delete '/events/:id' => "events#destroy"
   get '/events/:id' => "events#show"
+  get '/events' => "events#index"
 
   #for UsersController
   post '/users' => "users#create"
   put '/users/:id' => "users#update"
   delete '/users/:id' => "users#destroy"
-  get '/users/:id' => "users#show"
+  #get '/users/:id' => "users#show"
+  get '/users' => "users#index"
+  get '/users/user_with_most_tickets' => "users#user_with_most_tickets"
 
   resources :ticket_types do
   resources :tickets

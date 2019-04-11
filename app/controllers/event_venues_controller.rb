@@ -17,9 +17,13 @@ class EventVenuesController < ApplicationController
   end
 
   def show
-  @user = User.find(params[:id])
-  render json: @user
+  @event_venue = EventVenue.find(params[:id])
+  render json: @event_venue
   end
+
+  def index
+  @event_venue = EventVenue.all
+  render json: @event_venue
 
   private
 

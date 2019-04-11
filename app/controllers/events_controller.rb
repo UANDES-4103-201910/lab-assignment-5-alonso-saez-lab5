@@ -17,9 +17,13 @@ class EventsController < ApplicationController
   end
 
   def show
-  @user = User.find(params[:id])
-  render json: @user
+  @event = Event.find(params[:id])
+  render json: @event
   end
+
+  def index
+  @event = Event.all
+  render json: @event
 
 
   private
