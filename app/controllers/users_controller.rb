@@ -26,21 +26,15 @@ class UsersController < ApplicationController
   render json: @user
   end
 
-  #def user_with_most_tickets
-    #ordenes = Order.group(:user_id).count
-    #p= persons.order('count desc').limit(1)
-    #id_usuario = p.keys
-    #usuario = User.find(:id_usuario)
-    #return usuario.to_json
-    #render json: @user
-  #end
-
   def user_with_most_tickets
-  p = Order.group(:user_id).count
-  @user = p.order('COUNT desc')
-  render json: @user
+	a = User.joins(:orders => :tickets).group(:user_id).count(:id)
+	b = a.sort_by{|k,v| v}
+	c = b[0]
+	@user = Hash[*c]
+	render json: @user
+  end
 
-end
+
 
   private
   def user_params

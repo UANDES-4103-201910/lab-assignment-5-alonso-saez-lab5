@@ -24,9 +24,9 @@ Rails.application.routes.draw do
   post '/users' => "users#create"
   put '/users/:id' => "users#update"
   delete '/users/:id' => "users#destroy"
-  #get '/users/:id' => "users#show"
   get '/users' => "users#index"
   get '/users/user_with_most_tickets' => "users#user_with_most_tickets"
+  get '/users/:id' => "users#show"
 
   resources :ticket_types do
   resources :tickets

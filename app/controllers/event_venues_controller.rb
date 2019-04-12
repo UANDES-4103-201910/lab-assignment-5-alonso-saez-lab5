@@ -24,6 +24,7 @@ class EventVenuesController < ApplicationController
   def index
   @event_venue = EventVenue.all
   render json: @event_venue
+  end
 
   private
 
