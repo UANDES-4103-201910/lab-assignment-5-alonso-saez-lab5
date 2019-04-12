@@ -26,6 +26,13 @@ class EventsController < ApplicationController
   render json: @event
   end
 
+  def upcoming_events
+	three_months = Date.today.next_month(3)
+	today = Date.today
+	@event = Event.where('start_date <= ? AND start_date >= ?', three_months, today)
+	render json: @event
+  end
+
   private
 
   def event_params

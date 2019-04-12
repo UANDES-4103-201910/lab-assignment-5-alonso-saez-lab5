@@ -17,8 +17,9 @@ Rails.application.routes.draw do
   post '/events' => "events#create"
   put '/events/:id' => "events#update"
   delete '/events/:id' => "events#destroy"
-  get '/events/:id' => "events#show"
   get '/events' => "events#index"
+  get '/events/upcoming_events' => "events#upcoming_events"
+  get '/events/:id' => "events#show"
 
   #for UsersController
   post '/users' => "users#create"
